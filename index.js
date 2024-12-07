@@ -7,7 +7,7 @@ const closeSettingsButton = document.getElementById('close-settings');
 const instructionField = document.querySelector('.instructionField');
 const setInstructionButton = document.getElementById('set-instruction');
 const deleteInstructionsButton = document.getElementById('deleteInstructions');
-const defaultInstruction = "You are a helpful assistant, you will write things in an easy to understand way that can be complex if needed to.";
+const defaultInstruction = "You are a helpful assistant, keep responses short and concise unless otherwise needed.";
 const savedInstruction = localStorage.getItem('instruction') || defaultInstruction;
 instructionField.value = savedInstruction;
 const messages = [{ role: "system", content: savedInstruction }];
@@ -66,7 +66,7 @@ async function sendMessage() {
 
         messages.push({ role: 'assistant', content: botMessage });
     } catch (error) {
-        addMessage('Error: Unable to fetch response from AI.', 'bot');
+        addMessage('Error: Unable to fetch response from AI. Ensure you have Ollama installed alongside llama3.2.', 'bot');
     }
 }
 
